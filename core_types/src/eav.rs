@@ -41,6 +41,9 @@ pub enum Attribute {
     Link,
 
     LinkTag(String),
+
+    #[serde(rename = "pending-entry")]
+    PendingEntry(Address),
 }
 
 impl fmt::Display for Attribute {
@@ -51,6 +54,7 @@ impl fmt::Display for Attribute {
             Attribute::EntryHeader => write!(f, "entry-header"),
             Attribute::Link => write!(f, "link"),
             Attribute::LinkTag(name) => write!(f, "link__{}", name),
+            Attribute::PendingEntry(address) => write!(f, "pending-entry__{}", address),
         }
     }
 }
